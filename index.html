@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>₹ 7th CPC Premium</title>
+
+
+<meta name="theme-color" content="#0a84ff">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="apple-mobile-web-app-title" content="7th CPC">
+
+
+<meta name="theme-color" content="#0a84ff">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="apple-mobile-web-app-title" content="7th CPC">
+
+<meta name="theme-color" content="#0a84ff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style>
+
+body{
+margin:0;
+padding:
+max(18px,env(safe-area-inset-top))
+18px
+max(18px,env(safe-area-inset-bottom));
+font-family:-apple-system,sans-serif;
+background:linear-gradient(135deg,#081120,#102b55);
+color:#fff;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.08);
+padding:24px;
+border-radius:28px;
+margin-bottom:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+animation:fadeUp .35s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(18px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.logo{
+width:82px;
+height:82px;
+border-radius:26px;
+background:linear-gradient(135deg,#0a84ff,#5e5ce6);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:42px;
+font-weight:700;
+margin:0 auto 18px;
+box-shadow:0 12px 28px rgba(10,132,255,0.35);
+}
+
+h2{
+margin:0;
+text-align:center;
+font-size:28px;
+}
+
+.subtitle{
+text-align:center;
+opacity:0.75;
+margin-top:6px;
+margin-bottom:26px;
+font-size:14px;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+font-size:14px;
+font-weight:600;
+margin-bottom:8px;
+opacity:0.92;
+}
+
+select,input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:18px;
+font-size:16px;
+background:rgba(255,255,255,0.12);
+color:#fff;
+outline:none;
+box-sizing:border-box;
+}
+
+select option{
+color:#000;
+}
+
+button{
+width:100%;
+padding:17px;
+border:none;
+border-radius:20px;
+font-size:17px;
+font-weight:700;
+background:linear-gradient(135deg,#0a84ff,#5e5ce6);
+color:white;
+margin-top:10px;
+box-shadow:0 8px 20px rgba(10,132,255,0.35);
+}
+
+.heading-row{
+font-weight:700;
+font-size:17px;
+margin-top:16px;
+padding-bottom:8px;
+border-bottom:1px solid rgba(255,255,255,0.15);
+}
+
+.result-row{
+display:flex;
+justify-content:space-between;
+padding:13px 0;
+border-bottom:1px solid rgba(255,255,255,0.06);
+font-size:15px;
+}
+
+.total-row{
+display:flex;
+justify-content:space-between;
+padding:16px 0;
+font-weight:700;
+font-size:20px;
+color:#30d158;
+margin-top:8px;
+border-top:1px solid rgba(255,255,255,0.15);
+}
+
+.info-row{
+display:flex;
+justify-content:space-between;
+padding:12px;
+background:rgba(255,255,255,0.08);
+border-radius:14px;
+margin-top:10px;
+font-size:14px;
+font-weight:600;
+}
+
+.footer{
+text-align:center;
+opacity:0.5;
+font-size:12px;
+padding-bottom:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">₹</div>
+
+<h2>7th CPC Premium</h2>
+
+<div class="subtitle">
+Offline Salary & Arrears Calculator
+</div>
+
+<div class="form-group">
+<label>Calculation Profile</label>
+
+<select id="calcMode" onchange="handleInputsVisibility()">
+
+<option value="salary" selected>
+Current Regular Monthly Salary
+</option>
+
+<option value="arrears">
+Calculate DA Hike Arrears
+</option>
+
+</select>
+</div>
+
+<div class="form-group">
+<label>Select Pay Matrix Level</label>
+
+<select id="payLevel" onchange="handleInputsVisibility()">
+
+<option value="1">Level 1</option>
+<option value="2">Level 2</option>
+<option value="3">Level 3</option>
+<option value="4">Level 4</option>
+<option value="5">Level 5</option>
+<option value="6">Level 6</option>
+<option value="7" selected>Level 7</option>
+<option value="8">Level 8</option>
+<option value="9">Level 9</option>
+<option value="10">Level 10</option>
+<option value="11">Level 11</option>
+<option value="12">Level 12</option>
+<option value="13">Level 13</option>
+<option value="14">Level 14</option>
+
+</select>
+</div>
+
+<div class="form-group">
+
+<label>Select Basic Pay Cell</label>
+
+<select id="basicPay"></select>
+
+</div>
+
+<div class="form-group">
+
+<label>Government Accommodation Holder?</label>
+
+<select id="govtQuarter" onchange="handleInputsVisibility()">
+
+<option value="no" selected>
+No (Draw Full HRA)
+</option>
+
+<option value="yes">
+Yes (Govt Quarter Occupied)
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group" id="formGroupDeductionType" style="display:none;">
+
+<label>License Fee Deduction Type</label>
+
+<select id="deductionType">
+
+<option value="standard" selected>
+Standard License Fee
+</option>
+
+<option value="dhananjay">
+Dhananjay Rule (3x LF + ₹40)
+</option>
+
+</select>
+
+</div>
+
+<div id="arrearsInputsBlock" style="display:none;">
+
+<div class="form-group">
+
+<label>DA Increase Percentage</label>
+
+<select id="daHikeRate">
+
+<option value="1">1%</option>
+<option value="2">2%</option>
+<option value="3" selected>3%</option>
+<option value="4">4%</option>
+<option value="5">5%</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Number of Months</label>
+
+<select id="arrearMonths">
+
+<option value="1">1 Month</option>
+<option value="2">2 Months</option>
+<option value="3">3 Months</option>
+<option value="4" selected>4 Months</option>
+<option value="6">6 Months</option>
+<option value="12">12 Months</option>
+
+</select>
+
+</div>
+
+</div>
+
+<button onclick="calculateSalary()">
+Calculate
+</button>
+
+</div>
+
+<div class="card" id="resultsCard" style="display:none;">
+
+<h2 id="resultsHeading">
+Salary Breakdown
+</h2>
+
+<div id="salaryBreakdownBlock">
+
+<div class="heading-row">
+Earnings
+</div>
+
+<div class="result-row">
+<span>Basic Pay</span>
+<span id="lblBasic"></span>
+</div>
+
+<div class="result-row">
+<span>Dearness Allowance (60%)</span>
+<span id="lblDA"></span>
+</div>
+
+<div class="result-row">
+<span>House Rent Allowance</span>
+<span id="lblHRA"></span>
+</div>
+
+<div class="result-row">
+<span>Transport Allowance</span>
+<span id="lblTA"></span>
+</div>
+
+<div class="total-row">
+<span>Gross Salary</span>
+<span id="lblGross"></span>
+</div>
+
+<div class="heading-row">
+Deductions
+</div>
+
+<div class="result-row">
+<span>NPS Deduction</span>
+<span id="lblNPS"></span>
+</div>
+
+<div class="result-row">
+<span>CGHS Contribution</span>
+<span id="lblCGHS"></span>
+</div>
+
+<div class="result-row">
+<span>CGEGIS Insurance</span>
+<span id="lblCGEGIS"></span>
+</div>
+
+<div class="result-row" id="rowStandardLF" style="display:none;">
+
+<span>License Fee</span>
+<span id="lblLicenseFee"></span>
+
+</div>
+
+<div class="result-row" id="rowDhananjay" style="display:none;">
+
+<span>Dhananjay Rule</span>
+<span id="lblDhananjay"></span>
+
+</div>
+
+<div class="info-row" id="rowTotalPaidGovt" style="display:none;">
+
+<span>Total Accommodation Cost</span>
+<span id="lblTotalPaidGovt"></span>
+
+</div>
+
+<div class="total-row">
+
+<span>Net Take Home</span>
+<span id="lblNet"></span>
+
+</div>
+
+</div>
+
+<div id="arrearsBreakdownBlock" style="display:none;">
+
+<div class="heading-row">
+DA Arrear Calculation
+</div>
+
+<div class="result-row">
+<span>Gross Arrear Value</span>
+<span id="lblGrossArrear"></span>
+</div>
+
+<div class="result-row">
+<span>NPS Recovery</span>
+<span id="lblNpsArrear"></span>
+</div>
+
+<div class="total-row">
+<span>Net Arrear Amount</span>
+<span id="lblNetArrear"></span>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+Premium Offline Edition
+</div>
+
+<script>
+
+const DA_RATE = 60;
+
+const matrixData = {
+
+"1":[18000,18500,19100,19700,20300,20900],
+"2":[19900,20500,21100,21700,22400,23100],
+"3":[21700,22400,23100,23800,24500,25200],
+"4":[25500,26300,27100,27900,28700,29600],
+"5":[29200,30100,31000,31900,32900,33900],
+"6":[35400,36500,37600,38700,39900,41100],
+"7":[44900,46200,47600,49000,50500,52000,53600,55200,56900],
+"8":[47600,49000,50500,52000,53600,55200],
+"9":[53100,54700,56300,58000,59700,61500],
+"10":[56100,57800,59500,61300,63100,65000],
+"11":[67700,69700,71800,73900,76100],
+"12":[78800,81200,83600,86100,88700],
+"13":[123100,126800,130600,134500],
+"14":[144200,148500,153000,157600]
+
+};
+
+function handleInputsVisibility(){
+
+updateBasicPayOptions();
+
+var mode =
+document.getElementById('calcMode').value;
+
+var lvl =
+parseInt(document.getElementById('payLevel').value);
+
+var govt =
+document.getElementById('govtQuarter').value;
+
+if(mode==='arrears'){
+document.getElementById('arrearsInputsBlock').style.display='block';
+}else{
+document.getElementById('arrearsInputsBlock').style.display='none';
+}
+
+if(govt==='yes' && lvl>=7){
+document.getElementById('formGroupDeductionType').style.display='block';
+}else{
+document.getElementById('formGroupDeductionType').style.display='none';
+}
+
+}
+
+function updateBasicPayOptions(){
+
+var lvl =
+document.getElementById('payLevel').value;
+
+var selectBox =
+document.getElementById('basicPay');
+
+var currentSelection =
+selectBox.value;
+
+selectBox.innerHTML = "";
+
+var values =
+matrixData[lvl];
+
+for(var i=0;i<values.length;i++){
+
+var opt =
+document.createElement('option');
+
+opt.value = values[i];
+
+opt.innerText =
+"₹ " + values[i].toLocaleString('en-IN');
+
+if(values[i]==currentSelection){
+opt.selected=true;
+}
+
+selectBox.appendChild(opt);
+
+}
+
+}
+
+function calculateSalary(){
+
+var mode =
+document.getElementById('calcMode').value;
+
+var basic =
+parseFloat(document.getElementById('basicPay').value);
+
+var lvl =
+parseInt(document.getElementById('payLevel').value);
+
+var govt =
+document.getElementById('govtQuarter').value;
+
+var deductionType =
+document.getElementById('deductionType').value;
+
+var hike =
+parseFloat(document.getElementById('daHikeRate').value);
+
+var months =
+parseFloat(document.getElementById('arrearMonths').value);
+
+var baseTa = 0;
+
+if(lvl>=9){
+baseTa=7200;
+}else if(lvl>=3){
+baseTa=3600;
+}else{
+baseTa=1350;
+}
+
+if(mode==='salary'){
+
+document.getElementById('salaryBreakdownBlock').style.display='block';
+
+document.getElementById('arrearsBreakdownBlock').style.display='none';
+
+var da =
+basic*0.60;
+
+var hra =
+govt==='no'
+? basic*0.30
+: 0;
+
+var ta =
+baseTa+(baseTa*0.60);
+
+var gross =
+basic+da+hra+ta;
+
+var nps =
+(basic+da)*0.10;
+
+var cghs =
+lvl>=12 ? 1000 :
+lvl>=7 ? 650 :
+450;
+
+var cgegis =
+lvl>=10 ? 120 :
+60;
+
+var standardLF =
+lvl==1 ? 210 :
+lvl<=5 ? 440 :
+lvl<=8 ? 660 :
+lvl<=11 ? 880 :
+lvl==12 ? 1650 :
+lvl==13 ? 1750 :
+2590;
+
+var activeLF = 0;
+var dhananjay = 0;
+var totalGovt = 0;
+
+if(govt==='yes'){
+
+if(lvl>=7 && deductionType==='dhananjay'){
+
+dhananjay =
+(standardLF*3)+40;
+
+totalGovt =
+(basic*0.30)+dhananjay;
+
+document.getElementById('rowDhananjay').style.display='flex';
+
+document.getElementById('rowStandardLF').style.display='none';
+
+}else{
+
+activeLF =
+standardLF;
+
+totalGovt =
+(basic*0.30)+activeLF;
+
+document.getElementById('rowStandardLF').style.display='flex';
+
+document.getElementById('rowDhananjay').style.display='none';
+
+}
+
+document.getElementById('rowTotalPaidGovt').style.display='flex';
+
+}else{
+
+document.getElementById('rowStandardLF').style.display='none';
+
+document.getElementById('rowDhananjay').style.display='none';
+
+document.getElementById('rowTotalPaidGovt').style.display='none';
+
+}
+
+var deductions =
+nps+cghs+cgegis+activeLF+dhananjay;
+
+var net =
+gross-deductions;
+
+document.getElementById('lblBasic').innerText =
+"₹ "+Math.round(basic).toLocaleString('en-IN');
+
+document.getElementById('lblDA').innerText =
+"₹ "+Math.round(da).toLocaleString('en-IN');
+
+document.getElementById('lblHRA').innerText =
+"₹ "+Math.round(hra).toLocaleString('en-IN');
+
+document.getElementById('lblTA').innerText =
+"₹ "+Math.round(ta).toLocaleString('en-IN');
+
+document.getElementById('lblGross').innerText =
+"₹ "+Math.round(gross).toLocaleString('en-IN');
+
+document.getElementById('lblNPS').innerText =
+"₹ "+Math.round(nps).toLocaleString('en-IN');
+
+document.getElementById('lblCGHS').innerText =
+"₹ "+Math.round(cghs).toLocaleString('en-IN');
+
+document.getElementById('lblCGEGIS').innerText =
+"₹ "+Math.round(cgegis).toLocaleString('en-IN');
+
+document.getElementById('lblLicenseFee').innerText =
+"₹ "+Math.round(activeLF).toLocaleString('en-IN');
+
+document.getElementById('lblDhananjay').innerText =
+"₹ "+Math.round(dhananjay).toLocaleString('en-IN');
+
+document.getElementById('lblTotalPaidGovt').innerText =
+"₹ "+Math.round(totalGovt).toLocaleString('en-IN');
+
+document.getElementById('lblNet').innerText =
+"₹ "+Math.round(net).toLocaleString('en-IN');
+
+}else{
+
+document.getElementById('salaryBreakdownBlock').style.display='none';
+
+document.getElementById('arrearsBreakdownBlock').style.display='block';
+
+var grossArrear =
+((basic*hike/100)+(baseTa*hike/100))*months;
+
+var npsArrear =
+((basic*hike/100)*0.10)*months;
+
+var netArrear =
+grossArrear-npsArrear;
+
+document.getElementById('lblGrossArrear').innerText =
+"₹ "+Math.round(grossArrear).toLocaleString('en-IN');
+
+document.getElementById('lblNpsArrear').innerText =
+"₹ "+Math.round(npsArrear).toLocaleString('en-IN');
+
+document.getElementById('lblNetArrear').innerText =
+"₹ "+Math.round(netArrear).toLocaleString('en-IN');
+
+}
+
+document.getElementById('resultsCard').style.display='block';
+
+}
+
+window.onload = function(){
+
+handleInputsVisibility();
+
+};
+
+</script>
+
+</body>
+</html>
