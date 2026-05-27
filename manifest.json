@@ -1,0 +1,16 @@
+{
+  "name": "₹ 7th CPC Premium",
+  "short_name": "₹ CPC",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#081120",
+  "theme_color": "#081120",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2489/2489756.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
