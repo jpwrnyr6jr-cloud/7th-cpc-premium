@@ -725,4 +725,3 @@ handleInputsVisibility();
 
 </body>
 </html>
-
