@@ -233,7 +233,27 @@ opacity:0.5;
 font-size:12px;
 padding-bottom:18px;
 }
+.container{
 
+animation: floatCard 4s ease-in-out infinite;
+
+}
+
+@keyframes floatCard{
+
+0%{
+transform: translateY(0px);
+}
+
+50%{
+transform: translateY(-6px);
+}
+
+100%{
+transform: translateY(0px);
+}
+
+}
 </style>
 
 </head>
