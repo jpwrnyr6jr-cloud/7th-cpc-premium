@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>₹ 7th CPC Premium</title>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0f172a">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+content="black-translucent">
+
+<meta name="apple-mobile-web-app-title"
+content="₹ CPC">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Inter',sans-serif;
+
+background:
+linear-gradient(
+180deg,
+#0f172a 0%,
+#1e293b 100%
+);
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+padding:22px;
+
+color:white;
+}
+
+.app{
+
+width:100%;
+max-width:520px;
+}
+
+.card{
+
+background:
+rgba(255,255,255,0.08);
+
+backdrop-filter:
+blur(18px);
+
+-webkit-backdrop-filter:
+blur(18px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+border-radius:30px;
+
+padding:24px;
+
+margin-bottom:22px;
+
+box-shadow:
+0 10px 40px rgba(0,0,0,0.35);
+}
+
+.logo{
+
+font-size:58px;
+
+text-align:center;
+
+margin-bottom:10px;
+}
+
+h1{
+
+font-size:32px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:8px;
+
+background:
+linear-gradient(
+135deg,
+#ffffff,
+#93c5fd
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+
+text-align:center;
+
+color:
+rgba(255,255,255,0.6);
+
+margin-bottom:26px;
+
+font-size:15px;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+label{
+
+display:block;
+
+margin-bottom:10px;
+
+font-size:15px;
+
+font-weight:700;
+}
+
+input,
+select{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.10);
+
+color:white;
+
+font-size:16px;
+
+outline:none;
+}
+
+select option{
+color:black;
+}
+
+button{
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+135deg,
+#3b82f6,
+#6366f1
+);
+
+color:white;
+
+font-size:18px;
+
+font-weight:700;
+
+margin-top:20px;
+
+box-shadow:
+0 10px 25px rgba(59,130,246,0.35);
+}
+
+button:active{
+transform:scale(0.98);
+}
+
+.result-title{
+
+font-size:22px;
+
+font-weight:800;
+
+margin-bottom:18px;
+
+text-align:center;
+}
+
+.result-row{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:14px 0;
+
+border-bottom:
+1px solid rgba(255,255,255,0.08);
+}
+
+.total{
+
+font-size:22px;
+
+font-weight:800;
+
+color:#93c5fd;
+
+border-bottom:none;
+}
+
+.footer{
+
+text-align:center;
+
+font-size:13px;
+
+color:
+rgba(255,255,255,0.45);
+
+margin-top:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="card">
+
+<div class="logo">₹</div>
+
+<h1>7th CPC Premium</h1>
+
+<div class="subtitle">
+Premium Salary Calculator
+</div>
+
+<div class="form-group">
+
+<label>Basic Pay</label>
+
+<input type="number"
+id="basicPay"
+placeholder="Enter Basic Pay">
+
+</div>
+
+<div class="form-group">
+
+<label>DA (%)</label>
+
+<input type="number"
+id="da"
+value="50">
+
+</div>
+
+<div class="form-group">
+
+<label>HRA (%)</label>
+
+<select id="hra">
+
+<option value="30">30%</option>
+
+<option value="20">20%</option>
+
+<option value="10">10%</option>
+
+</select>
+
+</div>
+
+<button onclick="calculateSalary()">
+Calculate Salary
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="result-title">
+Salary Details
+</div>
+
+<div class="result-row">
+<span>Basic Pay</span>
+<span id="rBasic">₹0</span>
+</div>
+
+<div class="result-row">
+<span>Dearness Allowance</span>
+<span id="rDa">₹0</span>
+</div>
+
+<div class="result-row">
+<span>HRA</span>
+<span id="rHra">₹0</span>
+</div>
+
+<div class="result-row total">
+<span>Total Salary</span>
+<span id="rTotal">₹0</span>
+</div>
+
+</div>
+
+<div class="footer">
+Designed with ❤️ for Government Employees
+</div>
+
+</div>
+
+<script>
+
+function calculateSalary(){
+
+let basic =
+parseFloat(
+document.getElementById('basicPay').value
+) || 0;
+
+let daPercent =
+parseFloat(
+document.getElementById('da').value
+) || 0;
+
+let hraPercent =
+parseFloat(
+document.getElementById('hra').value
+) || 0;
+
+let da =
+basic * daPercent / 100;
+
+let hra =
+basic * hraPercent / 100;
+
+let total =
+basic + da + hra;
+
+document.getElementById('rBasic').innerHTML =
+'₹' + basic.toFixed(0);
+
+document.getElementById('rDa').innerHTML =
+'₹' + da.toFixed(0);
+
+document.getElementById('rHra').innerHTML =
+'₹' + hra.toFixed(0);
+
+document.getElementById('rTotal').innerHTML =
+'₹' + total.toFixed(0);
+
+}
+
+if ('serviceWorker' in navigator) {
+
+window.addEventListener('load', () => {
+
+navigator.serviceWorker.register('sw.js');
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
